@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>ICT | Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url(https://media.istockphoto.com/id/1357230603/photo/watercolor-texture-abstract-beige-painting-background.jpg?b=1&s=170667a&w=0&k=20&c=YzRTLNrKOfkgcBJSQL_UtIqP8ueXEGn0T3u4seHvHuc=);
+      background-position: fixed;
+      background-size: cover;
+    }
+
+    .container {
+      text-align: left;
+      color: black;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    div {
+      background-color: #FFDCC0;
+    }
+
+    h2 {
+      font-size: 3rem;
+      margin-top: 0.5rem;
+      font-family: 'Open Sans', sans-serif;
+      text-decoration: underline;
+    }
+
+    p {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    input[type=number] {
+      font-size: 2rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    span {
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .calculate-button {
+      font-size: 2rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      width: 75%;
+      max-width: 200px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .converted-value-box {
+      font-size: 2rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background-color: #f8f9fa;
+      margin-top: 1rem;
+      width: fit-content;
+      display: inline-block;
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container text-center p-5">
+    <h2>Length Converter</h2>
+    <hr>
+    <p>
+      Conversion Unit:
+      <select id="conversionUnit">
+        <option value="Centimeters">Centimeters</option>
+        <option value="Meters">Meters</option>
+        <option value="Kilometers">Kilometers</option>
+      </select>
+    </p>
+    <hr>
+    <p>
+      <input id="inputMillimetersTop" type="number" placeholder="Input Millimeters" min="0">
+    </p>
+    <p>⬇</p>
+    <div class="converted-value-box">
+      Converted Value: <span id="convertedValue"></span>
+    </div>
+    <br>
+    <br>
+    <button class="btn btn-primary calculate-button" onclick="calculateConversion()">Calculate</button>
+    <script>
+      function calculateConversion() {
+        const inputMillimeters = document.getElementById("inputMillimetersTop").value;
+        const conversionUnit = document.getElementById("conversionUnit").value;
+        let result = "";
+
+        if (inputMillimeters < 0) {
+          alert("Negative values are not allowed. Please enter a positive number.");
+          return;
+        }
+
+        switch (conversionUnit) {
+          case "Centimeters":
+            result = (inputMillimeters / 10).toFixed(1);
+            break;
+          case "Meters":
+            result = (inputMillimeters / 1000).toFixed(1);
+            break;
+          case "Kilometers":
+            result = (inputMillimeters / 1000000).toFixed(1);
+            break;
+          default:
+            result = "";
+            break;
+        }
+
+        document.getElementById("convertedValue").innerText = result;
+      }
+    </script>
+  </div>
+</body>
+</html>
